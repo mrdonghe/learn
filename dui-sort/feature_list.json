@@ -41,7 +41,7 @@
       "Test sorting of slice with duplicate elements",
       "Test sorting of large random slices"
     ],
-    "passes": false,
+    "passes": true,
     "dependencies": [
       "feature_001"
     ]
