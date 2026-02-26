@@ -1,0 +1,59 @@
+[
+  {
+    "id": "feature_001",
+    "category": "functional",
+    "description": "Implement heap sort algorithm package with core sorting functions",
+    "priority": "high",
+    "steps": [
+      "Create heapify function to maintain max-heap property",
+      "Implement buildMaxHeap function to transform unsorted array into max-heap",
+      "Implement HeapSort function that sorts elements in ascending order",
+      "Add support for generic types using Go generics (any comparable type)"
+    ],
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "id": "feature_002",
+    "category": "functional",
+    "description": "Add utility functions for heap operations",
+    "priority": "medium",
+    "steps": [
+      "Implement heap push operation for adding elements",
+      "Implement heap pop operation for removing max element",
+      "Add heap size and empty check functions"
+    ],
+    "passes": false,
+    "dependencies": ["feature_001"]
+  },
+  {
+    "id": "feature_003",
+    "category": "testing",
+    "description": "Add comprehensive unit tests for heap sort implementation",
+    "priority": "high",
+    "steps": [
+      "Test sorting of empty slice",
+      "Test sorting of single element slice",
+      "Test sorting of already sorted slice (best case)",
+      "Test sorting of reverse sorted slice (worst case)",
+      "Test sorting of slice with duplicate elements",
+      "Test sorting of large random slices"
+    ],
+    "passes": false,
+    "dependencies": ["feature_001"]
+  },
+  {
+    "id": "feature_004",
+    "category": "functional",
+    "description": "Add CLI interface for heap sort demonstration",
+    "priority": "low",
+    "steps": [
+      "Accept comma-separated integers from command line",
+      "Display unsorted input",
+      "Display sorted output",
+      "Add timing information for performance reference"
+    ],
+    "passes": false,
+    "dependencies": ["feature_001"]
+  }
+]
