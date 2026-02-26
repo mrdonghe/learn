@@ -10,7 +10,7 @@
       "Add handling for empty slices and single element slices",
       "Implement sort function that extracts max element and rebuilds heap"
     ],
-    "passes": false,
+    "passes": true,
     "dependencies": []
   },
   {
