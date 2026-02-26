@@ -41,7 +41,7 @@
       "Output sorted result to stdout",
       "Handle invalid input gracefully with error messages"
     ],
-    "passes": false,
+    "passes": true,
     "dependencies": [
       "feature_001"
     ]
