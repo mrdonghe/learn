@@ -24,7 +24,9 @@
       "Add support for custom comparison functions"
     ],
     "passes": false,
-    "dependencies": ["feature_001"]
+    "dependencies": [
+      "feature_001"
+    ]
   },
   {
     "id": "feature_003",
@@ -38,7 +40,9 @@
       "Test sorting of empty and single element arrays",
       "Test sorting of random arrays and verify correctness"
     ],
-    "passes": false,
-    "dependencies": ["feature_001"]
+    "passes": true,
+    "dependencies": [
+      "feature_001"
+    ]
   }
 ]
