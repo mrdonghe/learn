@@ -10,7 +10,7 @@
       "Implement HeapSort function that sorts elements in ascending order",
       "Add support for generic types using Go generics (any comparable type)"
     ],
-    "passes": false,
+    "passes": true,
     "dependencies": []
   },
   {
