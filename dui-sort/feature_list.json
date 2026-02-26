@@ -10,7 +10,7 @@
       "Implement sift down function for heap maintenance",
       "Add handling for empty and single-element slices"
     ],
-    "passes": false,
+    "passes": true,
     "dependencies": []
   },
   {
