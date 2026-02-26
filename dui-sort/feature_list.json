@@ -57,7 +57,7 @@
       "Display sorted output",
       "Add timing information for performance reference"
     ],
-    "passes": false,
+    "passes": true,
     "dependencies": [
       "feature_001"
     ]
