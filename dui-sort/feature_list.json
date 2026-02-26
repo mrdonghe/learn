@@ -23,8 +23,7 @@
       "Implement Len, Less, and Swap methods",
       "Add support for custom comparison functions"
     ],
-    "passes": false,
-    "dependencies": [
+    "passes": true,
       "feature_001"
     ]
   },
