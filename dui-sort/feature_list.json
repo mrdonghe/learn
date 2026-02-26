@@ -23,7 +23,7 @@
       "Implement heap pop operation for removing max element",
       "Add heap size and empty check functions"
     ],
-    "passes": false,
+    "passes": true,
     "dependencies": [
       "feature_001"
     ]

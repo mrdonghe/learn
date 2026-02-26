@@ -60,3 +60,60 @@ func HeapSort[T constraints.Ordered](arr []T) {
 		heapify(arr, i, 0)
 	}
 }
+
+
+// HeapPush adds an element to the heap and maintains the max-heap property.
+// It appends the element and then "sifts up" to restore heap property.
+func HeapPush[T constraints.Ordered](arr []T, value T) []T {
+	// Append the new element to the end of the array
+	arr = append(arr, value)
+
+	// Sift up: move the new element to its correct position
+	i := len(arr) - 1
+	for i > 0 {
+		parent := (i - 1) / 2
+		if arr[i] <= arr[parent] {
+			break
+		}
+		arr[i], arr[parent] = arr[parent], arr[i]
+		i = parent
+	}
+
+	return arr
+}
+
+// HeapPop removes and returns the maximum element from the heap.
+// It replaces the root with the last element and then "sifts down" to restore heap property.
+// Returns the removed element and the modified slice.
+// Note: The caller is responsible for handling the returned slice (it may be empty).
+func HeapPop[T constraints.Ordered](arr []T) (T, []T) {
+	if len(arr) == 0 {
+		var zero T
+		return zero, arr
+	}
+
+	// Store the max element (root)
+	max := arr[0]
+
+	// Move the last element to the root
+	last := arr[len(arr)-1]
+	arr = arr[:len(arr)-1]
+
+	if len(arr) > 0 {
+		arr[0] = last
+		// Sift down: restore max-heap property
+		heapify(arr, len(arr), 0)
+	}
+
+	return max, arr
+}
+
+// HeapSize returns the number of elements in the heap.
+func HeapSize[T any](arr []T) int {
+	return len(arr)
+}
+
+// HeapEmpty returns true if the heap has no elements.
+func HeapEmpty[T any](arr []T) bool {
+	return len(arr) == 0
+}
