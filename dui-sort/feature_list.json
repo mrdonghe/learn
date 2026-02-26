@@ -24,7 +24,9 @@
       "Add heap size and empty check functions"
     ],
     "passes": false,
-    "dependencies": ["feature_001"]
+    "dependencies": [
+      "feature_001"
+    ]
   },
   {
     "id": "feature_003",
@@ -40,7 +42,9 @@
       "Test sorting of large random slices"
     ],
     "passes": false,
-    "dependencies": ["feature_001"]
+    "dependencies": [
+      "feature_001"
+    ]
   },
   {
     "id": "feature_004",
@@ -54,6 +58,8 @@
       "Add timing information for performance reference"
     ],
     "passes": false,
-    "dependencies": ["feature_001"]
+    "dependencies": [
+      "feature_001"
+    ]
   }
 ]
