@@ -1,0 +1,78 @@
+#!/usr/bin/env python3
+import sys
+import os
+import tempfile
+import shutil
+import signal
+import time
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+
+from infinite_agent import InfiniteAIDeveloper
+
+
+class TimeoutException(Exception):
+    pass
+
+
+def timeout_handler(signum, frame):
+    raise TimeoutException("Test timeout")
+
+
+def test_coding_session():
+    # Use existing initialized directory from previous test
+    test_dir = "/tmp/test_git_fix_fc3143h_"
+    if not os.path.exists(test_dir):
+        print("Directory not found, creating new")
+        test_dir = tempfile.mkdtemp(prefix="test_coding_")
+        dev = InfiniteAIDeveloper(test_dir)
+        dev.run_initializer("用go语言实现快速排序")
+    else:
+        print(f"Using existing directory: {test_dir}")
+        dev = InfiniteAIDeveloper(test_dir)
+
+    print(f"Pending features: {len(dev.feature_manager.get_pending_features())}")
+
+#     # Set a timeout for coding session (5 minutes)
+#     signal.signal(signal.SIGALRM, timeout_handler)
+#     signal.alarm(300)
+
+    try:
+        result = dev.run_coding_session()
+        print(f"Coding session result: {result}")
+
+        # Check if any files were created
+        import subprocess
+
+        changed = subprocess.run(
+            ["git", "status", "--porcelain"],
+            cwd=test_dir,
+            capture_output=True,
+            text=True,
+        )
+        print(f"Git status:\n{changed.stdout}")
+
+        # Check if feature passes updated
+        features = dev.feature_manager.load_features()
+        for f in features:
+            print(f"Feature {f['id']}: passes={f.get('passes')}")
+
+        return True
+    except TimeoutException:
+        print("Coding session timed out after 5 minutes")
+        return False
+    except Exception as e:
+        print(f"Error during coding session: {e}")
+        import traceback
+
+        traceback.print_exc()
+        return False
+    finally:
+#         signal.alarm(0)
+        # Keep directory for inspection
+        print(f"Test directory kept at {test_dir}")
+
+
+if __name__ == "__main__":
+    success = test_coding_session()
+    sys.exit(0 if success else 1)

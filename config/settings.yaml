@@ -1,0 +1,72 @@
+# Infinite AI Developer Configuration
+
+# OpenCode settings
+opencode:
+  # Mode: "cli" or "server"
+  mode: "cli"
+  
+  # CLI mode settings
+  command: "opencode"
+  timeout: 3600  # Shorter timeout for faster fallback
+  # model: "deepseek/deepseek-reasoner"  # Using default model instead
+  
+  # Server mode settings
+  server_url: "http://localhost:4096"
+  server_password: ""
+
+  verbose: true  # 显示 OpenCode 实时日志
+# Session settings
+session:
+  max_context_windows: 100
+  save_interval: 300
+
+# Git settings
+git:
+  auto_commit: true
+  commit_interval: 1
+  auto_push: true  # 自动推送到远程仓库
+
+# Testing settings
+testing:
+  e2e_enabled: true
+  test_framework: "playwright"
+  app_server_url: "http://localhost:3000"
+  headless: true
+
+# Feature management
+features:
+  default_priority: "high"
+  allow_dependency_skip: false
+
+
+# Feature list generation
+feature_generation:
+  # Number of features to generate (default: 2-5)
+  min_features: 2
+  max_features: 50
+  
+  # Retry settings
+  max_retries: 2
+  retry_timeout: 3600  # Shorter retry timeout
+  
+  # Fallback: if OpenCode fails, use these default feature templates
+  # Loaded from config, not hardcoded
+  default_features:
+    - id: "feature_001"
+      category: "functional"
+      description: "Implement core functionality for the project"
+      priority: "high"
+      steps:
+        - "Step 1: Set up project structure"
+        - "Step 2: Implement basic functionality"
+      passes: false
+      dependencies: []
+    - id: "feature_002"
+      category: "testing"
+      description: "Add tests for core functionality"
+      priority: "medium"
+      steps:
+        - "Step 1: Write unit tests"
+        - "Step 2: Run test suite"
+      passes: false
+      dependencies: ["feature_001"]
